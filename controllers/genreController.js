@@ -3,6 +3,9 @@ var async = require('async')
 
 var Genre = require('../models/genre')
 
+const { body, validationResult } = require('express-validator/check')
+const { sanitizeBody } = require('express-validator/filter')
+
 // Display list of all Genre.
 exports.genre_list = function(req, res, next) {
   Genre.find()
