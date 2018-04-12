@@ -6,13 +6,14 @@ var logger = require('morgan')
 
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
-var coolUserRouter = require('./routes/cool')
+var catalogRouter = require('./routes/catalog')
 
 var app = express()
 
 //Set up mongoose connection
 var mongoose = require('mongoose')
-var mongoDB = ''
+var mongoDB =
+  'mongodb://amalshehu:dcvtpmt24dx@ds015700.mlab.com:15700/urban-library'
 mongoose.connect(mongoDB)
 mongoose.Promise = global.Promise
 var db = mongoose.connection
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
-app.use('/users/cool', coolUserRouter)
+app.use('/catalog', catalogRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
