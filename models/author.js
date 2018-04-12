@@ -18,13 +18,17 @@ AuthorSchema.virtual('name').get(function() {
 AuthorSchema.virtual('url').get(function() {
   return '/catalog/author/' + this._id
 })
-
+// Virtual for author's formatted date of birth
 AuthorSchema.virtual('date_of_birth_formatted').get(function() {
-  return moment(this.date_of_birth).format('MMMM Do, YYYY')
+  return this.date_of_birth
+    ? moment(this.date_of_birth).format('YYYY-MM-DD')
+    : ''
 })
-
+// Virtual for author's formatted date of death
 AuthorSchema.virtual('date_of_death_formatted').get(function() {
-  return moment(this.date_of_death).format('MMMM Do, YYYY')
+  return this.date_of_death
+    ? moment(this.date_of_death).format('YYYY-MM-DD')
+    : 'Not available'
 })
 
 //Export model
