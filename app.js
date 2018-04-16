@@ -13,7 +13,7 @@ var app = express()
 //Set up mongoose connection
 var mongoose = require('mongoose')
 var mongoDB =
-  'mongodb://amalshehu:dcvtpmt24dx@ds015700.mlab.com:15700/urban-library'
+  'mongodb://unknown_user:j64qy@ds015700.mlab.com:15700/urban-library'
 mongoose.connect(mongoDB)
 mongoose.Promise = global.Promise
 var db = mongoose.connection
@@ -27,7 +27,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
